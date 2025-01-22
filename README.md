@@ -34,6 +34,7 @@ CREATE TABLE video_game_sales (
    other_sales FLOAT,
    global_sales FLOAT
 );
+
 Click the Execute button (or press F5) to run the query and create the table.
 Import video_game_sales.cv
 
@@ -56,7 +57,9 @@ FROM video_game_sales
 GROUP BY platform
 ORDER BY total_sales DESC, game_count DESC
 LIMIT 100
+
 What are the total sales in North America, Europe, Japan, and other regions?
+
 SELECT 
 SUM(na_sales) AS na_total_sales,
 SUM(eu_sales) AS eu_total_sales,
@@ -70,7 +73,9 @@ ROUND(AVG(global_sales)::numeric,2) AS average_global_sales
 FROM video_game_sales
 GROUP BY  genre 
 ORDER BY average_global_sales DESC
+
 Which publisher has the highest average global sales per game?
+
 SELECT 
 publisher, 
 ROUND(AVG(global_sales)::numeric,2) AS average_global_sales
@@ -85,14 +90,18 @@ SUM(global_sales) AS total_sales
 FROM video_game_sales
 GROUP BY year
 ORDER BY year DESC
+
 Which genre has the most games in the dataset?
+
 SELECT 
 genre,
 COUNT(*) AS game_count
 FROM video_game_sales
 GROUP BY genre
 ORDER BY game_count DESC
+
 What is the percentage of total global sales for each platform?
+
 SELECT platform, 
        SUM(global_sales) AS total_sales, 
        SUM(global_sales) * 100.0 / SUM(SUM(global_sales)) OVER () AS per_sales
@@ -107,7 +116,9 @@ na_sales
 FROM video_game_sales
 WHERE year IS NOT null
 ORDER BY year DESC, na_sales DESC
+
 Which game had the highest combined sales in Europe and Japan?
+
 SELECT 
 name,
 eu_sales,
