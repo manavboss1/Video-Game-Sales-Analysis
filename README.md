@@ -21,7 +21,7 @@ To execute this SQL statement in pgAdmin:
 Open pgAdmin and connect to your database.
 Right-click on your database and select Query Tool.
 Copy and paste the SQL statement into the query window.
-'''sql
+
 CREATE TABLE video_game_sales (
    rank INT,
    name VARCHAR(255),
