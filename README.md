@@ -21,7 +21,7 @@ To execute this SQL statement in pgAdmin:
 Open pgAdmin and connect to your database.
 Right-click on your database and select Query Tool.
 Copy and paste the SQL statement into the query window.
-
+```sql
 CREATE TABLE video_game_sales (
    rank INT,
    name VARCHAR(255),
@@ -35,7 +35,7 @@ CREATE TABLE video_game_sales (
    other_sales FLOAT,
    global_sales FLOAT
 );
-
+```
 Click the Execute button (or press F5) to run the query and create the table.
 Import video_game_sales.cv
 
