@@ -43,6 +43,7 @@ Import video_game_sales.cv
 Here are some example questions that you can use for data analysis with your video_game_sales table in PostgreSQL.
 
 What are the top 10 games by global sales?
+```sql
 SELECT
 name, 
 global_sales
@@ -58,9 +59,9 @@ FROM video_game_sales
 GROUP BY platform
 ORDER BY total_sales DESC, game_count DESC
 LIMIT 100
-
+```
 What are the total sales in North America, Europe, Japan, and other regions?
-
+```sql
 SELECT 
 SUM(na_sales) AS na_total_sales,
 SUM(eu_sales) AS eu_total_sales,
@@ -74,9 +75,9 @@ ROUND(AVG(global_sales)::numeric,2) AS average_global_sales
 FROM video_game_sales
 GROUP BY  genre 
 ORDER BY average_global_sales DESC
-
+```
 Which publisher has the highest average global sales per game?
-
+```sql
 SELECT 
 publisher, 
 ROUND(AVG(global_sales)::numeric,2) AS average_global_sales
@@ -91,18 +92,18 @@ SUM(global_sales) AS total_sales
 FROM video_game_sales
 GROUP BY year
 ORDER BY year DESC
-
+```
 Which genre has the most games in the dataset?
-
+```sql
 SELECT 
 genre,
 COUNT(*) AS game_count
 FROM video_game_sales
 GROUP BY genre
 ORDER BY game_count DESC
-
+```
 What is the percentage of total global sales for each platform?
-
+```sql
 SELECT platform, 
        SUM(global_sales) AS total_sales, 
        SUM(global_sales) * 100.0 / SUM(SUM(global_sales)) OVER () AS per_sales
@@ -117,9 +118,9 @@ na_sales
 FROM video_game_sales
 WHERE year IS NOT null
 ORDER BY year DESC, na_sales DESC
-
+```
 Which game had the highest combined sales in Europe and Japan?
-
+```sql
 SELECT 
 name,
 eu_sales,
@@ -128,5 +129,5 @@ jp_sales,
 FROM video_game_sales
 ORDER BY eu_jp_sales DESC
 LIMIT 5
-
+```
 ![image](https://github.com/user-attachments/assets/71161c7d-204f-430a-bec3-d4834e3b3d4e)
